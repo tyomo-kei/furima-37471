@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="P_oDM2YzGUnUUfiy4xYH" name="ページ1">
-        <mxGraphModel dx="880" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="968" dy="830" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -13,9 +13,9 @@
                 <mxCell id="51" value="itemsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="520" y="40" width="280" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" style="edgeStyle=none;html=1;endArrow=ERmany;endFill=0;endSize=20;startArrow=ERone;startFill=0;jumpSize=6;startSize=20;exitX=0.465;exitY=-0.029;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="53" edge="1">
+                <mxCell id="52" style="edgeStyle=none;html=1;endArrow=ERmany;endFill=0;endSize=20;startArrow=ERone;startFill=0;jumpSize=6;startSize=20;exitX=0.454;exitY=1.014;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.458;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="50" edge="1" target="53">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="161" y="210" as="targetPoint"/>
+                        <mxPoint x="230" y="420" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="53" value="purchasesテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
