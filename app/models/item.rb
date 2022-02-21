@@ -4,8 +4,8 @@ class Item < ApplicationRecord
    has_one    :purchase
    has_one_attached :image
 
-   validates :product_name,          presence: { message: "商品名が空です" }
-   validates :product_description,   presence: { message: "商品説明が空です" }
+   validates :product_name,          presence: true, length:{ maximum:40 }
+   validates :product_description,   presence: true, length:{ maximum:1000 }
    validates :category_id,           numericality: { other_than: 1 , message: "カテゴリーが空です"}
    validates :situation_id,          numericality: { other_than: 1 , message: "商品の状態が空です" }
    validates :charge_id,             numericality: { other_than: 1 , message: "配送料の負担が空です" }
