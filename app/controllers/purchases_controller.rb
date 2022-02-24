@@ -9,10 +9,11 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @buyer =  Buyer.new(buyer_params)
     if @buyer.valid? #バリデーションが通るか確認するための記述（formオブジェクトではsaveの時にバリデーションをしないため）
+      pay_item
       @buyer.save
       redirect_to root_path 
     else
-      redirect_to item_purchases_path(@item.id)
+      render :index
     end
     
   end
@@ -20,7 +21,16 @@ class PurchasesController < ApplicationController
   private
 
   def buyer_params
-    params.require(:buyer).permit(:post_code, :prefecture_id, :municipality, :house_num, :building, :telephone).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:buyer).permit(:post_code, :prefecture_id, :municipality, :house_num, :building, :telephone).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
+    Payjp::Charge.create(
+      amount: @item.price,  # 商品の値段
+      card: buyer_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
   end
 
 end

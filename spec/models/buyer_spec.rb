@@ -11,7 +11,7 @@ RSpec.describe Buyer, type: :model do
 
   describe '商品購入' do
     context '商品購入できるとき' do
-      it '全ての入力欄が入力されていると購入できる' do
+      it 'クレジット情報、配送先、tokenが入力されていると購入できる' do
         expect(@buyer).to be_valid
       end
       it 'buildingが空欄でも購入できる' do
@@ -25,6 +25,11 @@ RSpec.describe Buyer, type: :model do
     end
 
     context '商品購入できないとき' do
+      it 'tokenが空だと購入でない' do
+        @buyer.token = nil
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Token can't be blank")
+      end 
       it '郵便番号が空だと購入でない' do
         @buyer.post_code = ''
         @buyer.valid?

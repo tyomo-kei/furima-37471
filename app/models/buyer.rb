@@ -10,6 +10,7 @@ class Buyer
     validates :municipality
     validates :house_num
     validates :telephone,     format: {with: /\A\d{10,11}\z/ }
+    validates :token
     #purchase_idは購入後取得するのでここでのバリデーションは必要ない
   end
 
