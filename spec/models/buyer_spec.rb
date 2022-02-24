@@ -65,6 +65,11 @@ RSpec.describe Buyer, type: :model do
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include("Telephone is invalid")
       end 
+      it '電話番号が9桁だと購入でない' do
+        @buyer.telephone = '012345678'
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Telephone is invalid")
+      end 
       it '電話番号が-が含まれると購入でない' do
         @buyer.telephone = '012-3456-7890'
         @buyer.valid?
