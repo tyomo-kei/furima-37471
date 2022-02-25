@@ -32,7 +32,7 @@ RSpec.describe Buyer, type: :model do
       it '郵便番号が空だと購入でない' do
         @buyer.post_code = ''
         @buyer.valid?
-        expect(@buyer.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
+        expect(@buyer.errors.full_messages).to include("Post code can't be blank")
       end
       it '郵便番号にーがないとと購入でない' do
         @buyer.post_code = '1234567'
@@ -62,7 +62,7 @@ RSpec.describe Buyer, type: :model do
       it '電話番号が空だと購入でない' do
         @buyer.telephone = ''
         @buyer.valid?
-        expect(@buyer.errors.full_messages).to include("Telephone can't be blank", 'Telephone is invalid')
+        expect(@buyer.errors.full_messages).to include("Telephone can't be blank")
       end
       it '電話番号が12桁だと購入でない' do
         @buyer.telephone = '012345678901'
