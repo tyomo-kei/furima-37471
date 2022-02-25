@@ -1,7 +1,6 @@
 class Buyer
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :house_num, :building, :telephone, :purchase_id,
-                :token
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :house_num, :building, :telephone, :token
 
   with_options presence: true do
     validates :user_id
