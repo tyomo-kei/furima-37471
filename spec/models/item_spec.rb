@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '価格が9_999_999を超えると登録できない' do
-        @item.price = Faker::Number.between(from: 9999999 )
+        @item.price = Faker::Number.between(from: 9_999_999)
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be an integer')
       end
