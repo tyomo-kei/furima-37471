@@ -8,7 +8,7 @@ class PurchasesController < ApplicationController
   end
   
   def create
-    item_params    @buyer =  Buyer.new(buyer_params)
+    @buyer =  Buyer.new(buyer_params)
     if @buyer.valid? #バリデーションが通るか確認するための記述（formオブジェクトではsaveの時にバリデーションをしないため）
       @buyer.save
       redirect_to root_path 
