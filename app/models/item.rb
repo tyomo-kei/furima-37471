@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  #has_one    :purchase
+  has_one    :purchase
   has_one_attached :image
 
   validates :product_name,          presence: true, length: { maximum: 40 }
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :prefecture_id,         numericality: { other_than: 1, message: '発送元の地域が空です' }
   validates :day_ship_id,           numericality: { other_than: 1, message: '発送日までの日数が空です' }
   validates :price,                 presence: true,
-                                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/, message: '価格は、¥300~¥9,999,999の間のみ・半角数値のみで入力' }
+                                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/, message: '価格は、¥300~¥9,999,999の間のみ・半角数値のみで入力' }
   validates :image,                 presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
