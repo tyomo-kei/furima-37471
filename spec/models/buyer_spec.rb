@@ -79,6 +79,16 @@ RSpec.describe Buyer, type: :model do
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include('Telephone is invalid')
       end
+      it 'userが紐付いていなければ購入できない' do
+        @buyer.user_id = nil
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @buyer.item_id = nil
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
