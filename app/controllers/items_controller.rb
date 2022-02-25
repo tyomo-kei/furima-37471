@@ -21,9 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if current_user.id != @item.user_id || @item.purchase.present?
-      redirect_to root_path
-    end
   end
 
   def edit
