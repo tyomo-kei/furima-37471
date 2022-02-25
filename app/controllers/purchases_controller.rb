@@ -1,21 +1,15 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :item_params, only: [:index, :create]
 
   def index
     @buyer = Buyer.new
-    @item = Item.find(params[:item_id])
-    if current_user.id != @item.user_id && @item.purchase.present?
-      redirect_to root_path
-    elsif current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id && @item.purchase.present? 
   end
   
   def create
-    @item = Item.find(params[:item_id])
-    @buyer =  Buyer.new(buyer_params)
+    item_params    @buyer =  Buyer.new(buyer_params)
     if @buyer.valid? #バリデーションが通るか確認するための記述（formオブジェクトではsaveの時にバリデーションをしないため）
-      pay_item
       @buyer.save
       redirect_to root_path 
     else
@@ -37,6 +31,10 @@ class PurchasesController < ApplicationController
       card: buyer_params[:token],    # カードトークン
       currency: 'jpy'                # 通貨の種類（日本円）
     )
+  end
+
+  def item_params
+    @item = Item.find(params[:item_id])
   end
 
 end
